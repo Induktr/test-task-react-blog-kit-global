@@ -1,4 +1,4 @@
-import { type FC, type InputHTMLAttributes, forwardRef } from "react";
+import { type InputHTMLAttributes, forwardRef } from "react";
 import { Search } from "lucide-react";
 import { cn } from "../../lib/utils";
 
@@ -31,5 +31,3 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     );
   }
 );
-
-Input.displayName = "Input";
