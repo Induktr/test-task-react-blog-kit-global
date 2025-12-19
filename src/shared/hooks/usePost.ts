@@ -3,10 +3,6 @@ import { db } from "../services/firebase";
 import useSWR from "swr";
 import type { Post } from "../lib/types";
 
-/**
- * Hook to fetch all posts from Firestore.
- * Normalizes 'createdAt' and 'date' fields for consistent formatting.
- */
 export const usePost = () => {
     const fetchPost = async (): Promise<Post[]> => {
       const postSnap = await getDocs(collection(db, "posts"));
@@ -22,10 +18,6 @@ export const usePost = () => {
     return useSWR<Post[]>("posts", fetchPost);
 }
 
-/**
- * Hook to fetch a single post by ID.
- * Handles normalization and returning a clean Post object.
- */
 export const usePostById = (id: string | undefined) => {
   const fetchSinglePost = async (): Promise<Post | null> => {
     if (!id) return null;

@@ -38,3 +38,16 @@ export const postCardSchema = z.object({
   date: z.string().min(1, 'Date is required').optional(),
   className: z.string().optional(),
 });
+
+export const commentSchema = z.object({
+  id: z.string(),
+  postId: z.string(),
+  author: z.string(),
+  text: z.string(),
+  createdAt: z.string().min(1, 'Date is required'),
+});
+
+export const commentFormDataSchema = z.object({
+  author: z.string().min(2, 'Name must be at least 2 characters'),
+  text: z.string().min(3, 'Comment must be at least 3 characters'),
+});

@@ -19,7 +19,6 @@ export const Button: FC<ButtonProps> = ({
         VARIANTS[variant],
         SIZES[size],
         fullWidth && "w-full",
-        // Mobile-first: full-width on mobile if requested or by default for primary buttons in some contexts
         className
       )}
     >

@@ -1,6 +1,8 @@
 import type { ButtonHTMLAttributes } from 'react';
 import z from 'zod';
 import {
+    commentFormDataSchema,
+    commentSchema,
     createPostSchema,
     FirebaseConfigSchema,
     postCardSchema,
@@ -33,8 +35,13 @@ export interface PostDetailProps {
     title: string;
     content: string;
     author: string;
-    date: any; // Allow flexible date input for formatting utility
+    date: Date;
     excerpt?: string;
     tags?: string[];
     className?: string;
 }
+
+export type CommentFormData = z.infer<typeof commentFormDataSchema>;
+
+export type Comment = z.infer<typeof commentSchema>;
+

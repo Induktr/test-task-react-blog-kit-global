@@ -10,6 +10,7 @@ import { formatDate } from "../shared/lib/utils";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../shared/services/firebase";
 import type { Post as PostType } from "../shared/lib/types";
+import { CommentsSection } from "../features/comments/ui/CommentsSection";
 
 export const Post: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -126,13 +127,16 @@ export const Post: FC = () => {
 
         <section className="prose prose-slate max-w-none">
           <div className="text-slate-700 text-lg leading-[1.8] font-inter space-y-8">
+            <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Content</p>
             {post.content && post.content.split('\n').filter((p: string) => p.trim()).map((paragraph: string, idx: number) => (
-              <p key={idx} className="first-letter:text-5xl first-letter:font-black first-letter:text-[#1B2A41] first-letter:mr-3 first-letter:float-left first-letter:leading-none">
+              <p key={idx}>
                 {paragraph}
               </p>
             ))}
           </div>
         </section>
+
+        {id && <CommentsSection postId={id} />}
 
         <footer className="mt-20 pt-10 border-t-4 border-[#1B2A41]">
           <div className="bg-slate-50 rounded-3xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
